@@ -1,0 +1,201 @@
+<!doctype>
+<html>
+<head>
+<link rel="stylesheet" href="../js/jQueryUI/css/smoothness/jquery-ui-1.10.3.custom.min.css">
+<style type="text/css">
+body, input, select, table, td {
+	font-family: Arial;
+	font-size: 13px;
+	line-height: 1.45em;
+	color: inherit;
+}
+body {
+	background: #fff;
+	margin: 0;
+	padding: 0;
+}
+
+#container {
+	width: 560px;
+	margin: 50px auto 20px auto;
+	background-color: #fcfcfc;
+	border-radius: 4px 4px 4px 4px;
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0 0 5px rgba(0,0,0,0.2);
+	box-shadow: 0 0 5px rgba(0,0,0,0.2);
+	border:1px solid #ccc;
+}
+#header, #content, #footer {
+	padding: 10px 20px;
+}
+
+.key_group {
+	margin: 5px 0 12px 0;
+	padding-left: 38px;
+}
+.col_b .key_group:last-child {
+	margin-bottom: 0;
+}
+.disabled {
+	color: #999;
+}
+
+#logo {
+	display: block;
+    text-indent: -9999px;
+    height: 36px;
+    width: 225px;
+    margin: 0px 0 0 0px;
+	background: transparent url(../images/logo-blue.jpg) no-repeat top left;
+	margin-left:-6px;
+}
+h2 {
+	color: #595757;
+	float: left;
+	margin: 10px 0 5px 0;
+	padding: 0;
+	font-size: 20px;
+	font-weight: normal;
+	font-family: "Segoe UI Semibold", "Segoe Semibold", Helvetica, Arial, Verdana, MS Sans-Serif;
+}
+
+#version {
+	float: right;
+	color:#afafaf;
+}
+
+
+.col_ab {
+	clear: both;
+	padding: 20px;
+}
+.col_a, .col_b {
+	float: left;
+}
+.col_a {
+	width: 140px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #595757;
+}
+.col_a:after {
+	content: ":";
+}
+.col_a:empty, .empty {
+	color: transparent
+}
+.button1 {
+    background: #fff;
+    display: inline-block;
+    text-decoration: none;
+    background-color: #1b85e5;
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    border-radius: 6px;
+    padding: 8px 24px;
+    margin: 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.button2 {
+    background: #fff;
+    display: inline-block;
+    text-decoration: none;
+    background-color: #1b85e5;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    border-radius: 6px;
+    padding: 8px 24px;
+    margin: 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+</style>
+</head>
+
+<body class="dist">
+	<div id="container">
+		<div id="header">
+			<a id="logo" href="https://www.spanishdict.com">SpanishDict</a>
+		</div>
+		<form id="content" method="post">
+			<h2>Extension Options</h2>
+			<span id="version">Version: <span id="option_version"></span></span>
+			<div class="col_ab">
+				<div class="col_a">Display bubble</div>
+				<div class="col_b">
+				
+					<input type="checkbox" name="dblclick_checkbox" id="dblclick_checkbox" />
+					<label for="dblclick_checkbox">When I double-click a word</label>
+					<div class="dblclick_checkbox key_group disabled">
+						<label for="dblclick_key">Trigger key:</label>
+						<select disabled="disabled" name="dblclick_key" id="dblclick_key">
+							<option value="">None</option>
+							<option value="ctrlKey">Ctrl</option>
+							<option value="altKey">Alt</option>
+							<option value="shiftKey">Shift</option>
+						</select>
+					</div>
+					
+					<input type="checkbox" name="select_checkbox" id="select_checkbox" />
+					<label for="select_checkbox">When I select a word or phrase</label>
+					<div class="select_checkbox key_group disabled">
+						<label for="select_key">Trigger key:</label>
+						<select disabled="disabled" name="select_key" id="select_key">
+							<option value="">None</option>
+							<option value="ctrlKey">Ctrl</option>
+							<option value="altKey">Alt</option>
+							<option value="shiftKey">Shift</option>
+						</select>
+					</div>
+				
+				</div>
+			</div>
+			
+			<div class="col_ab" style="display:table;clear:both">
+				<div class="col_a">Word history</div>
+				<div class="col_b">
+					<input type="checkbox" name="history_checkbox" id="history_checkbox" />
+					<label for="history_checkbox">Store words I look up</label><br/>
+					<label style="display: inline-block; padding-left: 25px">Number of words stored in history: <span id="history_count"></span></label>
+					<br/>
+					<br/>
+					<div style="display: inline-block; padding-left: 30px">
+						<button id="downloadHistory" class="button1">Download history</button>
+						<button id="clearHistory" class="button1">Clear history</button>
+						<a href="#" id="download-history-link" download="DictionaristHistory.csv"></a>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col_ab">
+				<div class="col_a"></div>
+				<div class="col_b align_center">
+					<button type="submit" class="button2">Update</button>
+					<button type="reset" class="button2">Reset</button>
+				</div>
+			</div>
+			
+		</form>
+	</div>
+	
+<script src="../js/jQueryUI/js/jquery-1.9.1.min.js"></script>
+<script src="../js/jQueryUI/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="../js/dexie.min.js"></script>
+<script src="../js/options.js"></script>
+
+</body>
+
+</html>
