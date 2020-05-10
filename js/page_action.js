@@ -136,6 +136,10 @@ $('#search-form').submit(function (e) {
 						$('#conjugate').html(conju ).show();
 					}
 				})
+			}else{
+				$('#dict').hide();
+				$('#conj').hide();
+				$('#conjugate').hide();
 			}
 			
 		},
